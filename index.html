@@ -32,14 +32,12 @@
   .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
   code, .mono{font-family:'JetBrains Mono',monospace;}
 
-  /* background glow */
   body::before, body::after{
     content:""; position:fixed; border-radius:50%; filter:blur(90px); z-index:0; pointer-events:none;
   }
   body::before{width:520px; height:520px; background:radial-gradient(circle,rgba(255,46,136,.28),transparent 70%); top:-160px; left:-140px;}
   body::after{width:480px; height:480px; background:radial-gradient(circle,rgba(178,75,255,.22),transparent 70%); bottom:-140px; right:-120px;}
 
-  /* loading screen */
   #loader{
     position:fixed; inset:0; z-index:999; background:var(--bg);
     display:flex; align-items:center; justify-content:center; flex-direction:column; gap:14px;
@@ -56,7 +54,6 @@
   .load-bar span{display:block; height:100%; width:40%; background:linear-gradient(90deg,var(--pink),var(--violet)); animation:slide 1s ease-in-out infinite;}
   @keyframes slide{0%{transform:translateX(-120%);} 100%{transform:translateX(360%);}}
 
-  /* nav */
   header{position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:rgba(10,4,16,.72); border-bottom:1px solid var(--line);}
   nav.wrap{display:flex; align-items:center; justify-content:space-between; height:66px;}
   .logo{display:flex; align-items:center; gap:9px; font-family:'Unbounded'; font-weight:600; font-size:16px;}
@@ -72,7 +69,6 @@
   .page.active{display:block;}
   @keyframes fadein{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
 
-  /* home hero */
   .hero{padding:86px 0 58px; text-align:center;}
   .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--pink-soft); border:1px solid var(--line); padding:6px 14px; border-radius:20px; margin-bottom:26px;}
   .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:#4ee08a; box-shadow:0 0 8px #4ee08a;}
@@ -98,7 +94,6 @@
   .sec-head h2{font-size:clamp(26px,4vw,36px); margin:0 0 10px;}
   .sec-head p{color:var(--muted); font-size:15px; line-height:1.6; margin:0;}
 
-  /* feature grid */
   .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
   .card{background:var(--bg2); border:1px solid var(--line); border-radius:16px; padding:22px; transition:.25s;}
   .card:hover{border-color:var(--pink-soft); transform:translateY(-3px);}
@@ -106,7 +101,6 @@
   .card h3{font-size:16px; margin:0 0 6px; font-family:'Manrope'; font-weight:800;}
   .card p{font-size:13.5px; color:var(--muted); margin:0; line-height:1.55;}
 
-  /* code block */
   .code{background:#0e0616; border:1px solid var(--line); border-radius:14px; overflow:hidden; margin:18px 0;}
   .code-head{display:flex; gap:6px; padding:10px 14px; border-bottom:1px solid var(--line);}
   .code-head i{width:9px; height:9px; border-radius:50%; background:#4a2a44;}
@@ -137,7 +131,6 @@
   footer .flinks{display:flex; gap:18px; justify-content:center; margin-bottom:14px; flex-wrap:wrap;}
   footer .flinks a{color:var(--muted);} footer .flinks a:hover{color:var(--pink-soft);}
 
-  /* AI floating button + panel */
   #aiBtn{
     position:fixed; bottom:calc(24px + env(safe-area-inset-bottom,0px)); right:24px; z-index:80;
     width:58px; height:58px; border-radius:50%; border:none; cursor:pointer;
@@ -163,7 +156,7 @@
   .ai-head .t .pulse{width:8px; height:8px; border-radius:50%; background:#4ee08a; box-shadow:0 0 8px #4ee08a;}
   .ai-head button{background:none; border:none; color:var(--muted); font-size:18px; cursor:pointer;}
   #aiMsgs{flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:10px;}
-  .msg{max-width:82%; padding:10px 13px; border-radius:14px; font-size:13.5px; line-height:1.5;}
+  .msg{max-width:82%; padding:10px 13px; border-radius:14px; font-size:13.5px; line-height:1.5; white-space:pre-wrap; word-break:break-word;}
   .msg.bot{align-self:flex-start; background:rgba(255,255,255,.05); border:1px solid var(--line); border-bottom-left-radius:4px;}
   .msg.user{align-self:flex-end; background:linear-gradient(120deg,var(--pink),var(--violet)); color:#fff; border-bottom-right-radius:4px;}
   .msg.typing{display:flex; gap:4px; align-items:center; padding:12px 14px;}
@@ -209,7 +202,6 @@
 
 <main class="wrap">
 
-  <!-- HOME -->
   <section class="page" id="page-home">
     <div class="hero">
       <div class="eyebrow"><span class="dot"></span> v1.0.1 · live on npm</div>
@@ -228,13 +220,11 @@
     </div>
   </section>
 
-  <!-- FEATURES -->
   <section class="page" id="page-features">
     <div class="sec-head"><span class="tag">FEATURE ARSENAL</span><h2>Everything a WhatsApp bot needs</h2><p>A 100% drop-in replacement for the original Baileys API — same calls, cleaner engine underneath.</p></div>
     <div class="grid" id="featGrid"></div>
   </section>
 
-  <!-- INSTALL -->
   <section class="page" id="page-install">
     <div class="sec-head"><span class="tag">GET STARTED</span><h2>Install in one line</h2><p>Works with npm, yarn or pnpm. Requires Node.js 20 or newer.</p></div>
 
@@ -254,7 +244,6 @@
       <tr><td>Memory</td><td>512MB+ recommended</td></tr>
     </table>
 
-    <!-- ===== PACKAGE.JSON SETUP ===== -->
     <div class="sec-head" style="margin-top:46px;"><span class="tag">PACKAGE.JSON SETUP</span><h2 style="font-size:24px;">Add FIXO-BAILEYS to your package.json</h2><p>Prefer managing dependencies manually? Add the package directly to your <code class="mono" style="color:var(--pink-soft);">package.json</code> file instead of running the install command.</p></div>
 
     <p style="color:var(--muted); font-size:14px; line-height:1.75; margin:0 0 4px;">Open your project's <code class="mono" style="color:var(--pink-soft);">package.json</code>, find the <code class="mono" style="color:var(--pink-soft);">dependencies</code> object, and add <code class="mono" style="color:var(--pink-soft);">fixo-baileys</code> in this exact format:</p>
@@ -275,13 +264,13 @@
     <table>
       <tr><th>Field</th><th>Value</th><th>Meaning</th></tr>
       <tr><td><code>"fixo-baileys"</code></td><td><code>"^1.0.1"</code></td><td>Package name and version range</td></tr>
-      <tr><td><code>^</code></td><td>Caret prefix</td><td>Auto-updates to any <b>1.x.x</b> release (safe minor &amp; patch updates)</td></tr>
+      <tr><td><code>^</code></td><td>Caret prefix</td><td>Auto-updates to any <b>1.x.x</b> release</td></tr>
       <tr><td><code>"type"</code></td><td><code>"module"</code></td><td>Required if you use ESM <code>import</code> syntax</td></tr>
     </table>
 
-    <div class="note">⚠️ <b>Important:</b> Each line inside <code class="mono" style="color:var(--pink-soft);">dependencies</code> except the last must end with a comma. Missing commas are the #1 cause of JSON parse errors.</div>
+    <div class="note">⚠️ <b>Important:</b> Each line inside <code class="mono" style="color:var(--pink-soft);">dependencies</code> except the last must end with a comma.</div>
 
-    <div class="sec-head" style="margin-top:36px;"><span class="tag">AFTER EDITING</span><h2 style="font-size:22px;">Install from your updated package.json</h2><p>Once the entry is saved, run the install command — your package manager reads <code class="mono" style="color:var(--pink-soft);">package.json</code> and pulls the exact version listed.</p></div>
+    <div class="sec-head" style="margin-top:36px;"><span class="tag">AFTER EDITING</span><h2 style="font-size:22px;">Install from your updated package.json</h2></div>
 
     <div class="tabs">
       <div class="tab on" data-pm2="npm">npm</div>
@@ -292,22 +281,11 @@
       <pre id="pmCode2">npm install</pre>
     </div>
 
-    <table>
-      <tr><th>Version Range</th><th>Behaviour</th></tr>
-      <tr><td><code>"^1.0.1"</code></td><td>✅ Recommended — accepts <code>1.0.1</code> up to <code>&lt;2.0.0</code></td></tr>
-      <tr><td><code>"~1.0.1"</code></td><td>Accepts patch updates only (<code>1.0.x</code>)</td></tr>
-      <tr><td><code>"1.0.1"</code></td><td>Locks to that exact version</td></tr>
-      <tr><td><code>"*"</code></td><td>⚠️ Not recommended — any version, may break</td></tr>
-    </table>
-
-    <div class="sec-head" style="margin-top:36px;"><span class="tag">IMPORT IT</span><h2 style="font-size:22px;">Use it in your code</h2><p>Once installed, import it just like the original Baileys package.</p></div>
+    <div class="sec-head" style="margin-top:36px;"><span class="tag">IMPORT IT</span><h2 style="font-size:22px;">Use it in your code</h2></div>
     <div class="code overflow-x"><div class="code-head"><i></i><i></i><i></i></div>
 <pre><span class="k">import</span> makeWASocket, { useMultiFileAuthState, DisconnectReason } <span class="k">from</span> <span class="s">'fixo-baileys'</span></pre>
     </div>
 
-    <div class="note">💡 <b>Tip:</b> Always run your install command after editing <code class="mono" style="color:var(--pink-soft);">package.json</code> so the new dependency is downloaded into <code class="mono" style="color:var(--pink-soft);">node_modules</code>. Commit <code class="mono" style="color:var(--pink-soft);">package.json</code> and <code class="mono" style="color:var(--pink-soft);">package-lock.json</code> together for reproducible builds.</div>
-
-    <!-- ===== QUICK CONNECT ===== -->
     <div class="sec-head" style="margin-top:46px;"><span class="tag">QUICK CONNECT</span><h2 style="font-size:22px;">Scan a QR code and you're live</h2></div>
     <div class="code overflow-x"><div class="code-head"><i></i><i></i><i></i></div>
 <pre><span class="k">import</span> makeWASocket, { useMultiFileAuthState } <span class="k">from</span> <span class="s">'fixo-baileys'</span>
@@ -333,7 +311,6 @@ bootUp()</pre>
     </div>
   </section>
 
-  <!-- DOCS -->
   <section class="page" id="page-docs">
     <div class="sec-head"><span class="tag">API CHEATSHEET</span><h2>Pair by phone number</h2><p>No QR scanner handy? Request a pairing code instead.</p></div>
     <div class="code overflow-x"><div class="code-head"><i></i><i></i><i></i></div>
@@ -354,10 +331,9 @@ bootUp()</pre>
   }
 })</pre>
     </div>
-    <p style="color:var(--muted); font-size:14px; margin-top:28px;">Full event reference, button templates and channel-media helpers are documented on the <a href="https://www.npmjs.com/package/fixo-baileys" target="_blank" rel="noopener" style="color:var(--pink-soft); font-weight:700;">npm package page ↗</a>.</p>
+    <p style="color:var(--muted); font-size:14px; margin-top:28px;">Full event reference on the <a href="https://www.npmjs.com/package/fixo-baileys" target="_blank" rel="noopener" style="color:var(--pink-soft); font-weight:700;">npm package page ↗</a>.</p>
   </section>
 
-  <!-- CONNECT -->
   <section class="page" id="page-connect">
     <div class="sec-head"><span class="tag">TALK TO FIXO DEV</span><h2>Get support, updates &amp; releases</h2><p>Reach out directly or follow along on our channels.</p></div>
     <div class="connect-grid" id="connectGrid"></div>
@@ -393,6 +369,13 @@ bootUp()</pre>
 </div>
 
 <script>
+/* ============================================================
+   🔑 GROQ API KEY — මෙතන ඔබේ key එක දාන්න
+   ============================================================ */
+const GROQ_API_KEY = "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";
+const GROQ_MODEL   = "openai/gpt-oss-120b";
+/* ============================================================ */
+
 // ---------- loader ----------
 window.addEventListener('load', () => {
   setTimeout(() => document.getElementById('loader').classList.add('hide'), 900);
@@ -445,7 +428,7 @@ CONNECTS.forEach(c=>{
   cg.insertAdjacentHTML('beforeend', `<a class="conn-card" href="${c[2]}" target="_blank" rel="noopener"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${c[3]}"/></svg></div><div><h3>${c[0]}</h3><span>${c[1]}</span></div></a>`);
 });
 
-// ---------- install tabs (command style) ----------
+// ---------- install tabs ----------
 const PM = {npm:'npm install fixo-baileys', yarn:'yarn add fixo-baileys', pnpm:'pnpm add fixo-baileys'};
 document.querySelectorAll('.tab[data-pm]').forEach(t=>{
   t.addEventListener('click', ()=>{
@@ -455,7 +438,6 @@ document.querySelectorAll('.tab[data-pm]').forEach(t=>{
   });
 });
 
-// ---------- package.json tabs (install style) ----------
 const PM2 = {npm:'npm install', yarn:'yarn install', pnpm:'pnpm install'};
 document.querySelectorAll('.tab[data-pm2]').forEach(t=>{
   t.addEventListener('click', ()=>{
@@ -465,11 +447,8 @@ document.querySelectorAll('.tab[data-pm2]').forEach(t=>{
   });
 });
 
-// ---------- AI chat ----------
-const OPENROUTER_KEY = "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";
-const SYSTEM_PROMPT = `You are FIXO AI, the assistant embedded on the FIXO-BAILEYS website. FIXO-BAILEYS is a privacy-first, tracker-free fork of the Baileys WhatsApp Web API library for Node.js (npm package "fixo-baileys", v1.0.1, MIT license, requires Node >=20). Key facts: 100% drop-in replacement for Baileys; Signal Protocol E2E encryption; 2GB streaming media without RAM blowups; QR code or pairing-code connection; auto-reconnect with backoff; multi-file auth state; rich interactive buttons/lists/templates; channel media support; full WebSocket event emitter; zero telemetry/trackers. Install with "npm install fixo-baileys" or add it manually to package.json inside the "dependencies" object as: "fixo-baileys": "^1.0.1" (the caret ^ allows safe 1.x.x auto-updates), then run "npm install". npm page: https://www.npmjs.com/package/fixo-baileys. The developer, FIXO DEV, can be reached on WhatsApp (+94703945265), Telegram (https://t.me/DARK_DEV_OFC), WhatsApp Channel and YouTube (@fixo_modz).
-
-STRICT RULE: You answer ONLY questions related to Baileys / FIXO-BAILEYS, WhatsApp bot development using this library, installation, package.json setup, pairing, features, or contacting FIXO DEV. If the user asks about anything else (general chat, other libraries, other topics, personal questions, etc.), politely refuse with a short message like "I can only answer questions about FIXO-BAILEYS 💗" and steer them back. Never answer off-topic questions even if asked nicely. Keep answers short, friendly and precise.`;
+// ---------- AI chat (Groq direct from browser) ----------
+const SYSTEM_PROMPT = `You are FIXO AI, the assistant embedded on the FIXO-BAILEYS website. FIXO-BAILEYS is a privacy-first, tracker-free fork of the Baileys WhatsApp Web API library for Node.js (npm package "fixo-baileys", v1.0.1, MIT license, requires Node >=20). Key facts: 100% drop-in replacement for Baileys; Signal Protocol E2E encryption; 2GB streaming media without RAM blowups; QR code or pairing-code connection; auto-reconnect with backoff; multi-file auth state; rich interactive buttons/lists/templates; channel media support; full WebSocket event emitter; zero telemetry/trackers. Install with "npm install fixo-baileys" or add it manually to package.json inside the "dependencies" object as: "fixo-baileys": "^1.0.1" (the caret ^ allows safe 1.x.x auto-updates), then run "npm install". npm page: https://www.npmjs.com/package/fixo-baileys. The developer, FIXO DEV, can be reached on WhatsApp (+94703945265), Telegram (https://t.me/DARK_DEV_OFC), WhatsApp Channel and YouTube (@fixo_modz). Answer questions about installing, using and troubleshooting the library, about editing package.json, and about contacting FIXO DEV. Keep answers short, friendly and precise. If asked something unrelated, answer briefly and steer back to FIXO-BAILEYS.`;
 
 const aiBtn = document.getElementById('aiBtn');
 const aiPanel = document.getElementById('aiPanel');
@@ -501,6 +480,12 @@ aiForm.addEventListener('submit', async (e)=>{
   e.preventDefault();
   const text = aiInput.value.trim();
   if(!text) return;
+
+  if(!GROQ_API_KEY || GROQ_API_KEY.includes('xxxxxxxx')){
+    addMsg('bot', "⚠️ Groq API key එක set කරලා නැහැ. කරුණාකර HTML file එකේ `GROQ_API_KEY` variable එකට ඔබේ key එක දාන්න.");
+    return;
+  }
+
   addMsg('user', text);
   history.push({role:'user', content:text});
   aiInput.value = '';
@@ -512,22 +497,29 @@ aiForm.addEventListener('submit', async (e)=>{
   aiMsgs.scrollTop = aiMsgs.scrollHeight;
 
   try{
-    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'Authorization':'Bearer ' + OPENROUTER_KEY,
-        'HTTP-Referer': location.href || 'https://fixo-baileys.dev',
-        'X-Title':'FIXO-BAILEYS Site'
+    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + GROQ_API_KEY
       },
       body: JSON.stringify({
-        model:'openai/gpt-4o-mini',
-        messages:[{role:'system', content:SYSTEM_PROMPT}, ...history],
-        max_tokens:400
+        model: GROQ_MODEL,
+        messages: [{role:'system', content:SYSTEM_PROMPT}, ...history.slice(-20)],
+        max_tokens: 500,
+        temperature: 0.7
       })
     });
+
     const data = await res.json();
     typing.remove();
+
+    if(!res.ok){
+      const errMsg = data?.error?.message || `HTTP ${res.status}`;
+      addMsg('bot', `⚠️ Groq API error: ${errMsg}`);
+      return;
+    }
+
     const reply = data?.choices?.[0]?.message?.content?.trim() || "Sorry, I couldn't reach the AI service just now — try again in a moment.";
     addMsg('bot', reply);
     history.push({role:'assistant', content:reply});
